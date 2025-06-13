@@ -50,7 +50,7 @@ const About = () => {
             </p>
             <div className="flex space-x-6 pt-4">
               <a
-                href="https://github.com/Ashishku1502"
+                href="https://github.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-2xl text-textSecondary-light dark:text-textSecondary-dark hover:text-secondary-light dark:hover:text-secondary-dark transition-colors"
