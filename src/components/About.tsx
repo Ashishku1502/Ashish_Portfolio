@@ -32,8 +32,13 @@ const About = () => {
         viewport={{ once: true }}
       >
         <h2 className="section-title">About Me</h2>
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="space-y-4">
+        <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
+          <img
+            src="/profile.jpeg"
+            alt="Profile"
+            className="w-40 h-40 rounded-full object-cover shadow-lg border-4 border-secondary-light dark:border-secondary-dark"
+          />
+          <div className="flex-1 grid md:grid-cols-1 gap-8">
             <p className="text-textSecondary-light dark:text-textSecondary-dark">
               I'm a Software Development Engineer with a passion for building scalable web applications 
               and solving complex technical challenges. With over 3 years of hands-on experience, I've 
@@ -78,25 +83,25 @@ const About = () => {
               </a>
             </div>
           </div>
-          <div>
-            <h3 className="text-xl font-semibold mb-6 text-textPrimary-light dark:text-textPrimary-dark">Skills & Technologies</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {skills.map((skill) => (
-                <motion.div
-                  key={skill.name}
-                  className="bg-tertiary-light dark:bg-tertiary-dark p-4 rounded-lg text-center text-textSecondary-light dark:text-textSecondary-dark hover:text-secondary-light dark:hover:text-secondary-dark transition-colors group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <div className="flex flex-col items-center space-y-2">
-                    <div className="transform transition-transform group-hover:scale-110">
-                      {skill.icon}
-                    </div>
-                    <span className="text-sm font-medium">{skill.name}</span>
+        </div>
+        <div>
+          <h3 className="text-xl font-semibold mb-6 text-textPrimary-light dark:text-textPrimary-dark">Skills & Technologies</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {skills.map((skill) => (
+              <motion.div
+                key={skill.name}
+                className="bg-tertiary-light dark:bg-tertiary-dark p-4 rounded-lg text-center text-textSecondary-light dark:text-textSecondary-dark hover:text-secondary-light dark:hover:text-secondary-dark transition-colors group"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className="flex flex-col items-center space-y-2">
+                  <div className="transform transition-transform group-hover:scale-110">
+                    {skill.icon}
                   </div>
-                </motion.div>
-              ))}
-            </div>
+                  <span className="text-sm font-medium">{skill.name}</span>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </motion.div>
