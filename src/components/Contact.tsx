@@ -3,26 +3,11 @@ import { motion } from 'framer-motion'
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa'
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    console.log(formData)
-  }
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
+  const [formStatus, setFormStatus] = useState({
+    submitting: false,
+    submitted: false,
+    error: false
+  });
 
   const contactInfo = [
     {
@@ -45,7 +30,40 @@ const Contact = () => {
       text: 'Bengaluru, Karnataka',
       href: '#',
     },
-  ]
+  ];
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus({ submitting: true, submitted: false, error: false });
+
+    try {
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+      
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setFormStatus({ submitting: false, submitted: true, error: false });
+        form.reset();
+        setTimeout(() => {
+          setFormStatus(prev => ({ ...prev, submitted: false }));
+        }, 5000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      setFormStatus({ submitting: false, submitted: false, error: true });
+      setTimeout(() => {
+        setFormStatus(prev => ({ ...prev, error: false }));
+      }, 5000);
+    }
+  };
 
   return (
     <section id="contact" className="py-20">
@@ -54,8 +72,10 @@ const Contact = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
+        className="max-w-4xl mx-auto px-4"
       >
-        <h2 className="section-title">Get In Touch</h2>
+        <h2 className="section-title text-center mb-12">Get In Touch</h2>
+        
         <div className="grid md:grid-cols-2 gap-12">
           <div>
             <p className="text-textSecondary-light dark:text-textSecondary-dark mb-8">
@@ -82,63 +102,78 @@ const Contact = () => {
               ))}
             </div>
           </div>
-          <motion.form
+
+          <form 
+            action="https://formspree.io/f/movwdzkk" 
+            method="POST" 
             onSubmit={handleSubmit}
             className="space-y-6"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
           >
             <div>
-              <label htmlFor="name" className="block mb-2 text-textSecondary-light dark:text-textSecondary-dark">
+              <label htmlFor="name" className="block text-sm font-medium text-textPrimary-light dark:text-textPrimary-dark mb-2">
                 Name
               </label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full p-3 bg-tertiary-light dark:bg-tertiary-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-light dark:focus:ring-secondary-dark text-textPrimary-light dark:text-textPrimary-dark"
+                placeholder="Your Name"
                 required
+                disabled={formStatus.submitting}
+                className="w-full px-4 py-2 rounded-lg bg-tertiary-light dark:bg-tertiary-dark text-textPrimary-light dark:text-textPrimary-dark focus:outline-none focus:ring-2 focus:ring-secondary-light dark:focus:ring-secondary-dark disabled:opacity-50"
               />
             </div>
+
             <div>
-              <label htmlFor="email" className="block mb-2 text-textSecondary-light dark:text-textSecondary-dark">
+              <label htmlFor="email" className="block text-sm font-medium text-textPrimary-light dark:text-textPrimary-dark mb-2">
                 Email
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full p-3 bg-tertiary-light dark:bg-tertiary-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-light dark:focus:ring-secondary-dark text-textPrimary-light dark:text-textPrimary-dark"
+                placeholder="Your Email"
                 required
+                disabled={formStatus.submitting}
+                className="w-full px-4 py-2 rounded-lg bg-tertiary-light dark:bg-tertiary-dark text-textPrimary-light dark:text-textPrimary-dark focus:outline-none focus:ring-2 focus:ring-secondary-light dark:focus:ring-secondary-dark disabled:opacity-50"
               />
             </div>
+
             <div>
-              <label htmlFor="message" className="block mb-2 text-textSecondary-light dark:text-textSecondary-dark">
+              <label htmlFor="message" className="block text-sm font-medium text-textPrimary-light dark:text-textPrimary-dark mb-2">
                 Message
               </label>
               <textarea
                 id="message"
                 name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={5}
-                className="w-full p-3 bg-tertiary-light dark:bg-tertiary-dark rounded-lg focus:outline-none focus:ring-2 focus:ring-secondary-light dark:focus:ring-secondary-dark text-textPrimary-light dark:text-textPrimary-dark"
+                placeholder="Your Message"
                 required
+                rows={4}
+                disabled={formStatus.submitting}
+                className="w-full px-4 py-2 rounded-lg bg-tertiary-light dark:bg-tertiary-dark text-textPrimary-light dark:text-textPrimary-dark focus:outline-none focus:ring-2 focus:ring-secondary-light dark:focus:ring-secondary-dark disabled:opacity-50"
               />
             </div>
-            <button 
-              type="submit" 
-              className="w-full btn-primary bg-secondary-light dark:bg-secondary-dark text-white dark:text-primary-dark hover:bg-opacity-90 dark:hover:bg-opacity-90"
+
+            <button
+              type="submit"
+              disabled={formStatus.submitting}
+              className="w-full px-6 py-3 rounded-lg bg-secondary-light dark:bg-secondary-dark text-white font-medium hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Send Message
+              {formStatus.submitting ? 'Sending...' : 'Send Message'}
             </button>
-          </motion.form>
+
+            {/* Status Messages */}
+            {formStatus.submitted && (
+              <div className="p-4 rounded-lg bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100">
+                Thank you for your message! I'll get back to you soon.
+              </div>
+            )}
+            {formStatus.error && (
+              <div className="p-4 rounded-lg bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-100">
+                Oops! Something went wrong. Please try again later.
+              </div>
+            )}
+          </form>
         </div>
       </motion.div>
     </section>
