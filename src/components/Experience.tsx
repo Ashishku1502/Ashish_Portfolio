@@ -6,7 +6,7 @@ const Experience = () => {
       title: 'Software Development Engineer -1',
       company: 'Prime Trucks & Auto Services Pvt Ltd',
       location: 'Bengaluru, India',
-      duration: 'Mar 2024 - Jan 2025',
+      duration: 'Mar 2024 - Present ',
       achievements: [
         'Led the development of a real-time fleet management dashboard using React.js and Node.js, improving operational efficiency by 25%',
         'Architected and implemented MongoDB database schemas, optimizing query performance by 30% for high-traffic endpoints',
