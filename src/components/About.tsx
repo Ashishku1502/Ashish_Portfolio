@@ -11,16 +11,12 @@ const About = () => {
     { name: 'React.js', icon: <FaReact className="text-2xl" /> },
     { name: 'Node.js', icon: <FaNodeJs className="text-2xl" /> },
     { name: 'Express.js', icon: <SiExpress className="text-2xl" /> },
-    { name: 'MongoDB', icon: <SiMongodb className="text-2xl" /> },
-    { name: 'Redis', icon: <SiRedis className="text-2xl" /> },
+    { name: 'MongoDB', icon: <SiMongodb className="text-2xl" /> }
     { name: 'AWS', icon: <FaAws className="text-2xl" /> },
-    { name: 'Docker', icon: <FaDocker className="text-2xl" /> },
     { name: 'Git', icon: <FaGitAlt className="text-2xl" /> },
     { name: 'CI/CD', icon: <BsGearFill className="text-2xl" /> },
-    { name: 'Jest', icon: <SiJest className="text-2xl" /> },
     { name: 'RESTful APIs', icon: <TbApi className="text-2xl" /> },
     { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-2xl" /> },
-    { name: 'Material-UI', icon: <SiMui className="text-2xl" /> }
   ]
 
   return (
