@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaJsSquare, FaReact, FaNodeJs, FaAws, FaDocker, FaGitAlt } from 'react-icons/fa'
-import { SiLeetcode, SiTypescript, SiExpress, SiMongodb, SiRedis, SiJest, SiTailwindcss } from 'react-icons/si'
+import { FaGithub, FaLinkedin, FaJsSquare, FaReact, FaNodeJs, FaAws, FaGitAlt } from 'react-icons/fa'
+import { SiLeetcode, SiTypescript, SiExpress, SiMongodb, SiTailwindcss } from 'react-icons/si'
 import { TbApi } from 'react-icons/tb'
 import { BsGearFill } from 'react-icons/bs'
 
