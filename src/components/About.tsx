@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { FaGithub, FaLinkedin, FaJsSquare, FaReact, FaNodeJs, FaAws, FaGitAlt } from 'react-icons/fa'
-import { SiLeetcode, SiTypescript, SiExpress, SiMongodb, SiTailwindcss } from 'react-icons/si'
+import { FaGithub, FaLinkedin, FaJsSquare, FaReact, FaNodeJs, FaAws, FaGitAlt, FaRobot, FaHeart } from 'react-icons/fa'
+import { SiLeetcode, SiTypescript, SiExpress, SiMongodb, SiTailwindcss, SiMui, SiReplit, SiGithubcopilot, SiHuggingface } from 'react-icons/si'
 import { TbApi } from 'react-icons/tb'
 import { BsGearFill } from 'react-icons/bs'
 
@@ -17,7 +17,14 @@ const About = () => {
     { name: 'CI/CD', icon: <BsGearFill className="text-2xl" /> },
     { name: 'RESTful APIs', icon: <TbApi className="text-2xl" /> },
     { name: 'Tailwind CSS', icon: <SiTailwindcss className="text-2xl" /> },
+    { name: 'Material-UI', icon: <SiMui className="text-2xl" /> },
+    { name: 'Cursor Ai', icon: <FaRobot className="text-2xl" /> },
+    { name: 'Replit', icon: <SiReplit className="text-2xl" /> },
+    { name: 'Github Copilot', icon: <SiGithubcopilot className="text-2xl" /> },
+    { name: 'Lovable Ai', icon: <FaHeart className="text-2xl" /> },
+    { name: 'Hugging Face Spaces', icon: <SiHuggingface className="text-2xl" /> }
   ]
+
   return (
     <section id="about" className="py-20">
       <motion.div
