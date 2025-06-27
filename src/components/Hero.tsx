@@ -23,7 +23,7 @@ const Hero = () => {
           </h2>
           <p className="text-textSecondary-light dark:text-textSecondary-dark max-w-2xl mb-8 text-lg">
             I'm a Software Development Engineer specializing in building exceptional digital experiences. 
-            With 3+ years of expertise in full-stack development, I focus on creating scalable, 
+            With 4+ years of expertise in full-stack development, I focus on creating scalable, 
             high-performance applications that solve real-world problems.
           </p>
           <div className="flex flex-wrap gap-4">
