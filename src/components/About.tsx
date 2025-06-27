@@ -43,7 +43,7 @@ const About = () => {
           <div className="flex-1 grid md:grid-cols-1 gap-8">
             <p className="text-textSecondary-light dark:text-textSecondary-dark">
               I'm a Software Development Engineer with a passion for building scalable web applications 
-              and solving complex technical challenges. With over 3 years of hands-on experience, I've 
+              and solving complex technical challenges. With over 4+years of hands-on experience, I've 
               developed expertise in full-stack development, focusing on React.js, Node.js, and cloud technologies.
             </p>
             <p className="text-textSecondary-light dark:text-textSecondary-dark">
