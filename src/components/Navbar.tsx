@@ -79,4 +79,4 @@ const Navbar = ({ isMenuOpen, setIsMenuOpen }: NavbarProps) => {
   )
 }
 
-export default Navbar 
+export default Navbar
